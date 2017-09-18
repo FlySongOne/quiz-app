@@ -1,7 +1,15 @@
 # JavaScript-Quiz
 Group 8 JavaScript Quiz app 
 //TODO 
-WIREFRAMES, ERD, 
+WIREFRAMES, ERD, Project Board, StyleGuide
+
+## Third Party Technologies
+*  APIs
+*  Express
+*  React
+*  Axios
+*  body-parser
+
 
 
 ## User stories 
