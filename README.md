@@ -3,14 +3,12 @@ Group 8 JavaScript Quiz app
 //TODO 
 WIREFRAMES, ERD, Project Board, StyleGuide
 
-## Third Party Technologies
-*  APIs
-*  Express
-*  React
-*  Axios
-*  body-parser
+## Project Proposal
+A FlashCard Quiz Game with various quiz types and difficulty settings. Quiz questions will be acquired through Quizlet API or other. 
 
 
+### PostMVP
+Hints for questions, timer
 
 ## User stories 
 *  As a user I want see the login link when I visit home page.
@@ -23,3 +21,10 @@ WIREFRAMES, ERD, Project Board, StyleGuide
 *  I want to be able to select an answer and have it stored for grading at the end of the quiz.
 *  When I complete the quiz, I want to see a score output with correct and incorrect answers.
 *  When the game summary is displayed, I want to be able to select a new quiz type to play again.
+
+## Third Party Technologies
+*  APIs
+*  Express
+*  React
+*  Axios
+*  body-parser
