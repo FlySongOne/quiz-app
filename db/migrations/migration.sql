@@ -1,6 +1,6 @@
 \c quizapp_dev
 
-CREATE TABLE IF NOT EXISTS user (
+CREATE TABLE IF NOT EXISTS users (
   id BIGSERIAL PRIMARY KEY,
   username VARCHAR(64),
   password VARCHAR(64),

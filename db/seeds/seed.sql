@@ -1,7 +1,7 @@
 
 \c quizapp_dev
 
-INSERT INTO user (username, password, name) VALUES
+INSERT INTO users (username, password, name) VALUES
   ('Song123', 'password', 'Song'),
   ('Nayeli456', 'password', 'Nayeli'),
   ('Yan789', 'password', 'Yan'),
