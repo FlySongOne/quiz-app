@@ -7,11 +7,12 @@ WIREFRAMES, ERD, Project Board, StyleGuide
 A FlashCard Quiz Game with various quiz types and difficulty settings. Quiz questions will be acquired through Quizlet API or other. 
 
 
-![Database Tables](project3_DB_Tables.png)
-![Log In Page](LogInPage.png)
-![Account Page](AccountPage.png)
-![Quiz Landing Page](QUIZ_LandingPage.png)
-![Quiz Landing Page](QUIZ_SiteMap.png)
+![Database Tables](./images/project3_DB_Tables.png)
+![Log In Page](./images/LogInPage.png)
+![Account Page](./images/AccountPage.png)
+![Quiz Landing Page](./images/QUIZ_LandingPage.png)
+![Quiz Landing Page](./images/QUIZ_SiteMap.png)
+![score page](./images/scores.png)
 
 
 ## Time and Priority Matrix 
