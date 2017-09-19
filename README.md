@@ -7,8 +7,7 @@ WIREFRAMES, ERD, Project Board, StyleGuide
 A FlashCard Quiz Game with various quiz types and difficulty settings. Quiz questions will be acquired through Quizlet API or other. 
 
 
-### PostMVP
-Hints for questions, timer
+![Database Tables](project3_DB_Tables.png)
 
 ## User stories 
 *  As a user I want see the login link when I visit home page.
@@ -28,3 +27,6 @@ Hints for questions, timer
 *  React
 *  Axios
 *  body-parser
+
+### PostMVP
+Hints for questions, timer
