@@ -11,7 +11,7 @@ A FlashCard Quiz Game with various quiz types and difficulty settings. Quiz ques
 ![Account Page](AccountPage.png)
 ![Quiz Landing Page](QUIZ_LandingPage.png)
 ![Quiz Landing Page](QUIZ_SiteMap.png)
-![time priority update](time/priority.jpeg)
+![time priority update](time_priority.png)
 
 ## User stories 
 *  As a user I want see the login link when I visit home page.
