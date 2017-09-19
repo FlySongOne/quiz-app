@@ -1,4 +1,4 @@
-# JavaScript-Quiz
+#  FlashCard Quiz Game
 Group 8 JavaScript Quiz app 
 //TODO 
 WIREFRAMES, ERD, Project Board, StyleGuide
