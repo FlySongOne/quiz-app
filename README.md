@@ -31,4 +31,4 @@ A FlashCard Quiz Game with various quiz types and difficulty settings. Quiz ques
 *  body-parser
 
 ### PostMVP
-Hints for questions, timer
+Hints for questions, timer, card back and index card design, 
