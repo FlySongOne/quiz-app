@@ -11,12 +11,13 @@ A FlashCard Quiz Game with various quiz types and difficulty settings. Quiz ques
 ![Log In Page](./images/LogInPage.png)
 ![Account Page](./images/AccountPage.png)
 ![Quiz Landing Page](./images/QUIZ_LandingPage.png)
-![Quiz Landing Page](./images/QUIZ_SiteMap.png)
 ![score page](./images/scores.png)
+![Quiz Landing Page](./images/QUIZ_SiteMap.png)
+
 
 
 ## Time and Priority Matrix 
-![time priority update](time_priority.png)
+![time priority update](./images/time_priority.png)
 
 ## User stories 
 *  As a user I want see the login link when I visit home page.
