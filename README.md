@@ -13,7 +13,7 @@ A FlashCard Quiz Game with various quiz types and difficulty settings. Quiz ques
 ![Quiz Landing Page](QUIZ_SiteMap.png)
 
 
-#Time and Priority Matrix
+## Time and Priority Matrix 
 ![time priority update](time_priority.png)
 
 ## User stories 
