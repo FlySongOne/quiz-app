@@ -1,6 +1,6 @@
 //controller
 // import model
-const User = require('../models/users')
+const User = require('../models/user')
 //declare an empty usersController object
 const usersController = {};
 

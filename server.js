@@ -8,7 +8,7 @@ const app = express();
 
 // setting up port
 const PORT = process.env.PORT || 3001;
-app.liisten(PORT, function() {
+app.listen(PORT, function() {
   console.log(`Listening on port ${PORT}`);
 });
 
