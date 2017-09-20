@@ -27,24 +27,22 @@ User.create = (user) => {
   );
 };
 
- User.update(user) => {
+ User.update = (user, id) => {
     return db.one(`
-      UPDATE users
-      SET
-      username = $/username/,
-      password =  $/password/,
-      name = $/name/
-      WHERE id = $/id/
+      UPDATE users SET
+      username = $1,
+      password =  $2,
+      name = $3
+      WHERE id = $4
       RETURNING *
-      `, user);
+      `,[users.username, users.password, users.user, id]);
   },
 
-  User.destroy(id) {
+  User.destroy = (id)=> {
     return db.none(`
-      DELETE
-        FROM user
+      DELETE FROM user
        WHERE id = $1
-    `, id);
+    `, [id]);
   },
 
 module.exports = User;
