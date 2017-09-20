@@ -39,5 +39,19 @@ A FlashCard Quiz Game with various quiz types and difficulty settings. Quiz ques
 *  Axios
 *  body-parser
 
+### MVP
+Log in/Log out
+Connect components
+API Calls from Quizlet
+DB/Table setup
+File Structure
+Routes
+Basic Game Summary
+
+Responsibilities:
+Song File structure/App.js logic
+Nayeli DB/ Design/ Style
+Yan Component setup and connect
+
 ### PostMVP
 Hints for questions, timer, card back and index card design, 
