@@ -4,20 +4,21 @@ import './App.css';
 import axios from 'axios';
 
 
+
 class App extends Component {
   constructor(){
      super();
      this.state = {
-         quizes : [],
+         quizes: [],
 
      }
   }
   componentDidMount(){
     console.log("component didMount");
-     axios('https://api.quizlet.com/2.0/sets/415?access_token=wa8vnvhGhsebXTcpcT7BJbQTPrMDVB6UyHyeXU36&whitespace=1')
+     axios('https://api.quizlet.com/2.0/users/xyanz?access_token=9XwJVHqgT9sje5xUHEHGe8KbW37SCX7CUAuF8Zh7&whitespace=1')
          .then(res =>{
+          console.log("res data", res.data);
              this.setState(prevState =>{
-                console.log(res.data);
                 return{
                     quizes: res.data
                 }
@@ -32,7 +33,8 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to React</h2>
         </div>
-        <h2> {this.state.quizes} </h2>
+        <p>Here are your quizzes</p>
+          {this.state.quizes}
       </div>
     );
   }
