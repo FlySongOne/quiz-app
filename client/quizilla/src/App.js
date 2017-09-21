@@ -2,8 +2,12 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import axios from 'axios';
+import { Route, Redirect, Switch}from 'react-router-dom';
 
-
+import Header from './components/partials/Header';
+import Footer from './components/partials/Footer';
+import Home from './components/Home';
+import About from './components/About';
 
 class App extends Component {
   constructor(){
@@ -33,8 +37,22 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to React</h2>
         </div>
+        <Header />
+        <main>
+          <Switch>
+
+           <Route exact path='/' component={Home}/>
+           <Route exact path='/about' component={About} />
+           <Redirect to='/' />
+
+          </Switch>
+        </main>
+
+        <Footer />
         <p>Here are your quizzes</p>
-          {this.state.quizes}
+
+
+
       </div>
     );
   }
