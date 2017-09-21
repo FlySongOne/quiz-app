@@ -14,3 +14,10 @@ INSERT INTO quiz (quizname) VALUES
   ('JS3'),
   ('JS4'),
   ('JS5');
+
+INSERT INTO questions (question, answer) VALUES
+('question1', 'answer1'),
+('question2', 'answer2'),
+('question3', 'answer3'),
+('question4', 'answer4'),
+('question5', 'answer5');
