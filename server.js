@@ -31,6 +31,9 @@ app.get('/', function(req, res) {
 const userRoutes = require('./routes/userroutes');
 app.use('/api/users', userRoutes);
 
+const questionRoutes = require('./routes/questionroutes');
+app.use('/api/questions', questionRoutes);
+
 //throw in error 404
 app.get('*', function(req, res) {
   res.status(404).send({message: 'Oops! Not found'});

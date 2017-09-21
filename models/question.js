@@ -20,10 +20,10 @@ Question.findById = (id) => {
 Question.create = (question) => {
   return db.one(
     `
-    INSERT INTO users (question, answer)
+    INSERT INTO questions (question, answer)
     VALUES ($1, $2)
     RETURNING *`,
-    [questions.question, questions.answer]
+    [question.question, question.answer]
   );
 };
 

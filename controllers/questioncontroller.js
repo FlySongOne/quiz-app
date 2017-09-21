@@ -1,32 +1,32 @@
 //controller
 // import model
-const Question = require('../models/user')
+const Question = require('../models/question')
 //declare an empty questionController object
 const questionsController = {};
 
 questionsController.index = (req, res) => {
   Question.findAll()
-    .then(questions=> {
+    .then(questions => {
         res.json({
         message: 'ok',
         data: { questions },
       });
     }).catch(err => {
       console.log(err);
-      res.status(500).json(err);
+      res.status(400).json({message: '400', err});
     });
 }
 
-questiosController.show = (req,res) => {
+questionsController.show = (req,res) => {
    Question.findById(req.params.id)
-   .then(questions =>{
+   .then(questions => {
       res.json({
          message:'ok',
          data: { questions },
       });
    }).catch(err=>{
       console.log(err);
-      res.status(400).json({message: '400' ,err});
+      res.status(400).json({message: '400', err});
    })
 };
 
@@ -44,4 +44,4 @@ questionsController.create = (req, res) => {
    });
 };
 
-module.exports = questionController;
+module.exports = questionsController;
