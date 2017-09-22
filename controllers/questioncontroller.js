@@ -1,23 +1,23 @@
 //controller
 // import model
-const Question = require('../models/user')
-//declare an empty questionController object
+const Question = require('../models/question')
+//declare an empty questionsController object
 const questionsController = {};
 
 questionsController.index = (req, res) => {
   Question.findAll()
-    .then(questions=> {
+    .then(questions => {
         res.json({
         message: 'ok',
         data: { questions },
       });
     }).catch(err => {
       console.log(err);
-      res.status(500).json(err);
+      res.status(500).json({message: '400',err});
     });
 }
 
-questiosController.show = (req,res) => {
+questionsController.show = (req,res) => {
    Question.findById(req.params.id)
    .then(questions =>{
       res.json({
@@ -33,15 +33,15 @@ questiosController.show = (req,res) => {
 questionsController.create = (req, res) => {
    Question.create({
      question: req.body.question,
-     answer: req.body.answer,
+     answer: req.body.answer
 
    }).then(questions => {
 
      res.json({message: 'ok', data: {questions}});
    }).catch(err => {
      console.log(err);
-     res.status(500).json({message:'400',err});
+     res.status(400).json({message:'400',err});
    });
 };
 
-module.exports = questionController;
+module.exports = questionsController;
