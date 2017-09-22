@@ -7,26 +7,26 @@ const usersController = {};
 usersController.index = (req, res) => {
   User.findAll()
     .then(users=> {
-        res.render('users/users-index',{
+        res.json({
         message: 'ok',
-        data: users,
+        data: { users },
       });
     }).catch(err => {
       console.log(err);
-      res.status(500).json(err);
+      res.status(400).json({message: '400',err});
     });
 }
 
 usersController.show = (req,res) => {
    User.findById(req.params.id)
    .then(users =>{
-      res.render('users/users-single',{
+      res.json({
          message:'ok',
-         data: users,
+         data: { users },
       });
    }).catch(err=>{
       console.log(err);
-      res.status(500).json(err);
+      res.status(400).json({message:'400',err});
    })
 };
 
@@ -36,35 +36,14 @@ usersController.create = (req, res) => {
      password: req.body.password,
      name: req.body.name
    }).then(users => {
+     res.json({ message: 'ok', data: { users } });
 
-     res.redirect('/users');
    }).catch(err => {
      console.log(err);
-     res.status(500).json(err);
+     res.status(400).json({message:'400',err});
    });
 };
-usersController.update = (req, res) => {
-   User.update({
-     username: req.body.username,
-     password: req.body.password,
-     name: req.body.name,
-   }, req.params.id).then(user => {
-     res.redirect('/users');
-   }).catch(err => {
-     console.log(err);
-     res.status(500).json(err);
-   })
-};
 
-usersController.delete = (req, res) => {
-   User.destroy(req.params.id)
-     .then(() => {
-       res.redirect('/user');
-     }).catch(err => {
-       console.log(err);
-      res.status(500).json(err);
-     });
-};
 
 module.exports = usersController;
 
