@@ -28,8 +28,13 @@ app.get('/', function(req, res) {
 });
 
 // API route
+const questionRoutes = require('./routes/questionroutes');
+app.use('/api/questions', questionRoutes);
+
 const userRoutes = require('./routes/userroutes');
 app.use('/api/users', userRoutes);
+
+
 
 //throw in error 404
 app.get('*', function(req, res) {
