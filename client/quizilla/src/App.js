@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import axios from 'axios';
 import { Route, Redirect, Switch}from 'react-router-dom';
-
+import QuestionList from './components/QuestionList';
 import Header from './components/partials/Header';
 import Footer from './components/partials/Footer';
 import Home from './components/Home';
@@ -19,15 +19,21 @@ class App extends Component {
   }
   componentDidMount(){
     console.log("component didMount");
-     axios('https://api.quizlet.com/2.0/users/xyanz?access_token=9XwJVHqgT9sje5xUHEHGe8KbW37SCX7CUAuF8Zh7&whitespace=1')
+     axios('https://api.quizlet.com/2.0/sets/415?access_token=AsWhuQmWunahrHGbpjqZ4TSV3HeCtrpv2kYNd5DM&whitespace=1')
          .then(res =>{
-          console.log("res data", res.data);
+          console.log("res data", res.data.terms);
              this.setState(prevState =>{
                 return{
-                    quizes: res.data
+                    quizes: res.data.terms
                 }
              });
          });
+  }
+  renderQuiz() {
+      return this.state.quizes.map((question) => {
+        //return <div>(question={question} key={question.id})</div>
+        return <div key={question.id}> {question} </div>
+    });
   }
 
   render() {
@@ -40,19 +46,16 @@ class App extends Component {
         <Header />
         <main>
           <Switch>
-
            <Route exact path='/' component={Home}/>
            <Route exact path='/about' component={About} />
            <Redirect to='/' />
-
           </Switch>
         </main>
-
-        <Footer />
         <p>Here are your quizzes</p>
-
-
-
+          <div className="questionList">
+            <QuestionList data={this.state.quizes} />
+          </div>
+        <Footer />
       </div>
     );
   }
