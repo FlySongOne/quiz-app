@@ -5,8 +5,8 @@ class Question extends Component {
   render() {
     return (
       <div className="my-question">
-        <h3>{this.props.question.content}</h3>
-        <span className="question">{this.props.quote.author}</span>
+        <h3>{this.props.element.term}</h3>
+        <h4>{this.props.element.definition}</h4>
       </div>
     );
   };
