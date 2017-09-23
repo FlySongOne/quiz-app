@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import App from '../components/App';
 
 class Footer extends Component {
   render() {
     return (
-      <p> Hi im a footer </p>
+      <div class="App-footer">
+        <p> Hi im a footer </p>
+      </div>
       );
   };
 }

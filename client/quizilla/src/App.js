@@ -18,7 +18,6 @@ class App extends Component {
      }
   }
 
-curl -H "Authorization: Bearer 8hSjdarnGQSwdZy3ybZFzy" https://api.quizlet.com/2.0/users/xyanz
 
 
   componentDidMount(){
@@ -50,10 +49,8 @@ curl -H "Authorization: Bearer 8hSjdarnGQSwdZy3ybZFzy" https://api.quizlet.com/2
     return (
       <div className="App">
         <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+          <Header />
         </div>
-        <Header />
         <main>
           <Switch>
            <Route exact path='/' component={Home}/>
