@@ -7,15 +7,19 @@ class QuestionList extends Component {
   super();
   this.state = {
     quizes: [],
-    questionListDataReceived: true,
+
+    questionListDataReceived: false,
     }
   }
 componentDidMount() {
-  axios('https://api.quizlet.com/2.0/sets/415?access_token=ZGmxFs82dsm35aqxd3MYuDSSVN5wk74Zjq88PwXa&whitespace=1')
-    .then(res => {
+  let access_token = '8hSjdarnGQSwdZy3ybZFzy';
+  axios('https://api.quizlet.com/2.0/sets/415?access_token=WUJPDuYy6CcKaWjbGd7Eukmh5fhzufukn4ymrwzY&whitespace=1')
+    .then(res =>{
       console.log("res data", res.data.terms);
-        this.setState({
+        this.setState(prevState =>{
+          return{
             quizes: res.data.terms
+            }
          });
      });
   }
