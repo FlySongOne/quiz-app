@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Header from './partials/Header';
 import Footer from './partials/Footer';
-import Home from './Home';
+import Home from './home';
 import About from './About';
 import QuestionList from './QuestionList';
 
