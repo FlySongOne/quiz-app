@@ -6,8 +6,6 @@ class Home extends Component {
 
   render() {
     return (
-
-
     <div id='form'>
       <p>Welcome to My Quizzilla!</p>
       <p>Please Log In</p>
@@ -17,17 +15,19 @@ class Home extends Component {
            className="nameInput"
            type="text"
            placeholder="User Name"
+           onChange={this.props.handleInputUsernameChange}
            />
            <input
            value= {this.props.inputPasswordVal}
            className='nameInput'
            type='text'
            placeholder='Password'
+           onChange={this.props.handleInputPasswordChange}
            />
           <button
             type="submit"
             className="Button"
-            id="submit">
+            id="submit">Login
           </button>
         </form>
       </div>
