@@ -6,10 +6,8 @@ class GameSummary extends Component {
 
  render() {
     return (
-
-    <div id='summary'>
-      <p>game summary</p>
-        {this.props.numberCorrect}
+    <div id='overlay'>
+      <p id='text'>game summary {this.props.numberCorrect}</p>
     </div>
 
     );

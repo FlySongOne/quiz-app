@@ -29,7 +29,7 @@ class Quiz extends Component {
   }
   componentDidMount(){
     console.log("component didMount");
-     axios('http://localhost:3001/api/questions/')
+     axios('/api/questions/')
       .then(res => {
     this.limit = res.data.data.questions.length;
     console.log()
@@ -58,7 +58,7 @@ handleClick(){
 
   questionFunc(input){
 
-    axios('http://localhost:3001/api/questions/')
+    axios('/api/questions/')
       .then(res => {
         this.setState({
            answer: res.data.data.questions[this.answerCounter].answer,
@@ -91,11 +91,12 @@ handleClick(){
      console.log(`You guessed ${this.state.numberCorrect} out of ${this.limit}`)
   //   event.preventDefault();
      this.setState({ numberCorrect: this.state.score})
+     // document.querySelector('#overlay').style.display='block';
   }
 
 
   render() {
-    let gameSummary = this.state.numberCorrect?<GameSummary numberCorrect={this.state.numberCorrect}/>:null;
+    let gameSummary = this.state.numberCorrect?<GameSummary numberCorrect={this.state.numberCorrect} />:null;
     return(
       <div>
         <h3>{this.state.question}</h3>
@@ -103,7 +104,7 @@ handleClick(){
         <button onClick={this.handleClick}>Answer</button>
         { gameSummary }
         <h3>Your Score: {this.state.score} of {this.limit}</h3>
-        <a href='#' onClick={this.gameSummaryFunc.bind(this)}>Game Summary</a>
+        <a href='#poop' onClick={this.gameSummaryFunc.bind(this)}>Game Summary</a>
       </div>
       )
   }
