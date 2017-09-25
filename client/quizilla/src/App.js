@@ -56,11 +56,11 @@ class App extends Component {
        username: this.state.inputUsernameVal,
        password: this.state.inputPasswordVal,
      })
-     .then(res => { console.log('after res in handleSubmit', this.state.inputUsernameVal)
+     .then(res => { console.log('after res in handleSubmit', res.data.data.users.username)
       {
         const newUser ={
-           username: res.data.data.user.username,
-           password: res.data.data.user.password,
+           username: res.data.data.users.username,
+           password: res.data.data.users.password,
         }
         console.log("handleSub" , res);
         this.setState((prevState)=>{
