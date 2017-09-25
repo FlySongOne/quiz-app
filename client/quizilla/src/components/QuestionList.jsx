@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Question from './partials/Question';
 import axios from 'axios';
+import GameSummary from './GameSummary';
 
 class QuestionList extends Component {
   constructor() {
@@ -10,6 +11,8 @@ class QuestionList extends Component {
     questions: [],
     questionListDataReceived: false,
     }
+     this.gameOver = false;
+     this.numberCorrect = 0;
      this.score = 0;
      this.answerCounter = 0;
      this.questionCounter = 1;
@@ -30,10 +33,17 @@ componentDidMount() {
       let input = document.getElementById('input').value
 
       console.log('Inside handleClick');
+
+    if(this.answerCounter < this.limit){
       this.questionFunc(input);
-      let field = document.getElementById('input');
-      field = "";
     }
+
+    if(this.numberCorrect === this.limit-1)
+    {
+      this.gameOver = true;
+    }
+
+  }
   questionFunc(input){
 
     axios('https://api.quizlet.com/2.0/sets/415?client_id=27pm26gZCk&whitespace=1')
@@ -46,8 +56,10 @@ componentDidMount() {
         {
            console.log("Correct answer!");
            this.score += 10;
+           this.numberCorrect += 1;
            this.setState({
               score: this.score,
+              numberCorrect:this.numberCorrect,
            })
         }else{
            console.log("Wrong answer!");
@@ -73,12 +85,15 @@ componentDidMount() {
      console.log('Your score is '+this.score+'/50');
   }
   render() {
+    let gameSummary = this.numberCorrect ? <GameSummary numberCorrect={this.numberCorrect} /> :null;
     return(
       <div>
         <h3>{this.state.question}</h3>
         <input id='input' placeholder='your answer'></input>
         <button onClick={this.handleClick}>Answer</button>
         <h3>Your Score: {this.state.score} of 50</h3>
+         {gameSummary}
+         return (<button onClick={this.gameSummary}>Game Summary</button>)
       </div>
       )
   }

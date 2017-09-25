@@ -10,6 +10,9 @@ import Home from './components/Home';
 import About from './components/About';
 import QuestionList from './components/QuestionList';
 import UserList from './components/UserList';
+import LoginForm from './components/LoginForm';
+
+
 
 class App extends Component {
 constructor(){
@@ -22,6 +25,7 @@ constructor(){
      this.handleSubmit = this.handleSubmit.bind(this);
      this.handleInputUsernameChange = this.handleInputUsernameChange.bind(this);
      this.handleInputPasswordChange = this.handleInputPasswordChange.bind(this);
+
 
   }
   componentDidMount() {
@@ -56,6 +60,9 @@ constructor(){
     event.target.password='';
     console.log(this.state.inputUsernameVal);
 
+
+    console.log(this.state.inputUsernameVal);
+
  //   this.existingUser(this.state.inputUsernameVal, this.state.inputPasswordVal);
    axios.post('http://localhost:3001/api/users/', {
        username: this.state.inputUsernameVal,
@@ -88,23 +95,16 @@ constructor(){
 
         <main>
           <Switch>
-           <Route exact path='/home' component={Home} />
+           <Route exact path='/' component={Home} />
            <Route exact path='/users' component={UserList} />
            <Route exact path='/quizzes' component={Quiz} />
+           <Route exact path='/questions' component={QuestionList} />
            <Route exact path='/about' component={About} />
-
           </Switch>
         </main>
-           <Home
-              handleInputUsernameChange={this.handleInputUsernameChange}
-              handleInputPasswordChange={this.handleInputPasswordChange}
-              handleSubmit={this.handleSubmit}
-              inputUsernameVal={this.inputUsernameVal}
-              inputPasswordVal={this.inputPasswordVal}
-          />
-        <Footer />
 
-     </div>
+        <Footer />
+      </div>
     );
   }
 }
