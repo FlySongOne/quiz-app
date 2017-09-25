@@ -16,6 +16,7 @@ class Quiz extends Component {
        questions: [],
        gameSummary:'',
        numberCorrect:0,
+       score: 0,
    }
    this.gameOver = false;
  //  this.numberCorrect = 0;
@@ -67,10 +68,8 @@ handleClick(){
         {
            console.log("Correct answer!");
            this.score += 1;
-           this.numberCorrect +=1;
            this.setState({
               score: this.score,
-              numberCorrect: this.numberCorrect,
            })
         }else{
            console.log("Wrong answer!");
@@ -96,15 +95,14 @@ handleClick(){
 
 
   render() {
-    let gameSummary = this.state.numberCorrect?<GameSummary numberCorrect={this.numberCorrect}/>:null;
+    let gameSummary = this.state.numberCorrect?<GameSummary numberCorrect={this.state.numberCorrect}/>:null;
     return(
       <div>
         <h3>{this.state.question}</h3>
         <input id='input' placeholder='your answer'></input>
         <button onClick={this.handleClick}>Answer</button>
         { gameSummary }
-        <h3>{`You guessed ${this.state.numberCorrect} out of ${this.limit}`}</h3>
-        <h3>Your Score: {this.state.score} of 50</h3>
+        <h3>Your Score: {this.state.score} of {this.limit}</h3>
         <a href='#' onClick={this.gameSummaryFunc.bind(this)}>Game Summary</a>
       </div>
       )
