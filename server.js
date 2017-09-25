@@ -30,9 +30,6 @@ app.use(bodyParser.urlencoded({extended: false}));
 //app.get('/', function(req, res) {
 //  res.sendFile(__dirname + '/public/index.html');
 //});
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname+'/client/build/index.html'));
-});
 
 // API route
 const questionRoutes = require('./routes/questionroutes');
