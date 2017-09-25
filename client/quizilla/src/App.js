@@ -9,9 +9,10 @@ import Footer from './components/partials/Footer';
 import Home from './components/Home';
 import About from './components/About';
 import QuestionList from './components/QuestionList';
+import UserList from './components/UserList';
 
 class App extends Component {
-  constructor(){
+constructor(){
      super();
      this.state = {
         users: [],
@@ -19,25 +20,52 @@ class App extends Component {
         inputPasswordVal:'',
      }
      this.handleSubmit = this.handleSubmit.bind(this);
+     this.handleInputUsernameChange = this.handleInputUsernameChange.bind(this);
+     this.handleInputPasswordChange = this.handleInputPasswordChange.bind(this);
+
+  }
+  componentDidMount() {
+    axios('https://localhost:3001/api/users')
+      .then(res => {
+        this.setState(prevState => {
+          return {
+            users: res.data.userData,
+          }
+        });
+      });
+
+  }
+  handleInputUsernameChange(event) {
+    this.setState({
+      inputUsernameVal: event.target.value
+    });
 
   }
 
-  handleSubmit(event){
-    console.log('handleSubmit' , this.refs.inputUsernameVal);
-    event.preventDefault();
-    // event.target.username='';
-    // event.target.password='';
+  handleInputPasswordChange(event) {
+    this.setState({
+      inputPasswordVal: event.target.value
+    });
+  }
 
-     axios.post('http://localhost:3001/api/users/', {
+
+  handleSubmit(event){
+    console.log('handleSubmit', this.state);
+    event.preventDefault();
+    event.target.username='';
+    event.target.password='';
+    console.log(this.state.inputUsernameVal);
+
+ //   this.existingUser(this.state.inputUsernameVal, this.state.inputPasswordVal);
+   axios.post('http://localhost:3001/api/users/', {
        username: this.state.inputUsernameVal,
        password: this.state.inputPasswordVal,
      })
-     .then(res => { console.log('after res', this)
+     .then(res => { console.log('after res in handleSubmit', this.state.inputUsernameVal)
       {
         const newUser ={
-
-           username: res.data.data.user.username,
-           password: res.data.data.user.password,
+           username: res.data.data.users.username,
+           password: res.data.data.users.password,
         }
         console.log("handleSub" , res);
         this.setState((prevState)=>{
@@ -47,9 +75,8 @@ class App extends Component {
         })
       }
     }).catch(err =>console.log(err));
+
   }
-
-
 
 
   render() {
@@ -58,18 +85,26 @@ class App extends Component {
         <div className="App-header">
         <Header />
         </div>
+
         <main>
           <Switch>
-           <Route exact path='/' component={Home}/>
+           <Route exact path='/home' component={Home} />
+           <Route exact path='/users' component={UserList} />
            <Route exact path='/quizzes' component={Quiz} />
            <Route exact path='/about' component={About} />
-           <Redirect to='/' />
+
           </Switch>
         </main>
+           <Home
+              handleInputUsernameChange={this.handleInputUsernameChange}
+              handleInputPasswordChange={this.handleInputPasswordChange}
+              handleSubmit={this.handleSubmit}
+              inputUsernameVal={this.inputUsernameVal}
+              inputPasswordVal={this.inputPasswordVal}
+          />
         <Footer />
-        <Home handleSubmit={this.handleSubmit}/>
-      </div>
 
+     </div>
     );
   }
 }
