@@ -6,9 +6,11 @@ class Home extends Component {
 
  render() {
     return (
-     <div id='home'>
+
+    <div id='home'>
       <p>Welcome to My Quizzilla!</p>
-     </div>
+    </div>
+
     );
   };
 }
