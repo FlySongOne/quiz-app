@@ -94,6 +94,7 @@ class App extends Component {
           <Switch>
            <Route exact path='/quizzes' component={Quiz} />
            <Route exact path='/about' component={About} />
+           <Route exact path='/questions' component={QuestionList} />
            <Route exact path='/' component={Home} />
           </Switch>
         </main>
