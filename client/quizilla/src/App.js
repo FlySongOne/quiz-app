@@ -9,6 +9,7 @@ import Footer from './components/partials/Footer';
 import Home from './components/home';
 import About from './components/About';
 import QuestionList from './components/QuestionList';
+import LoginForm from './components/LoginForm';
 
 class App extends Component {
   constructor(){
@@ -56,18 +57,18 @@ class App extends Component {
        username: this.state.inputUsernameVal,
        password: this.state.inputPasswordVal,
      })
-     .then(res => { console.log('after res in handleSubmit', this.state.inputUsernameVal)
+     .then(res => { console.log('after res in handleSubmit', res.data.data.users.username)
       {
         const newUser ={
-           username: res.data.data.user.username,
-           password: res.data.data.user.password,
+           username: res.data.data.users.username,
+           password: res.data.data.users.password,
         }
-        console.log("handleSub" , res);
         this.setState((prevState)=>{
           return{
             users: prevState.users.concat(newUser)
           }
         })
+        console.log("handleSub prevState" , this.state);
       }
     }).catch(err =>console.log(err));
   }
@@ -81,20 +82,22 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
         <Header />
-        </div>
-        <main>
-          <Switch>
-           <Route exact path='/quizzes' component={Quiz} />
-           <Route exact path='/about' component={About} />
-          </Switch>
-        </main>
-        <Home
+        <LoginForm
           handleInputUsernameChange={this.handleInputUsernameChange}
           handleInputPasswordChange={this.handleInputPasswordChange}
           handleSubmit={this.handleSubmit}
           inputUsernameVal={this.inputUsernameVal}
           inputPasswordVal={this.inputPasswordVal}
           />
+        </div>
+        <main>
+          <Switch>
+           <Route exact path='/quizzes' component={Quiz} />
+           <Route exact path='/about' component={About} />
+           <Route exact path='/questions' component={QuestionList} />
+           <Route exact path='/' component={Home} />
+          </Switch>
+        </main>
         <Footer />
       </div>
 
