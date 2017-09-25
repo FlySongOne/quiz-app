@@ -13,11 +13,7 @@ app.listen(PORT, function() {
 });
 
 // setting up static file
-//app.use('/static', express.static(path.join(__dirname, 'public')));
-
-// Serve static files from the React app
-app.use(express.static(path.join(__dirname, 'client/build')));
-
+app.use('/static', express.static(path.join(__dirname, 'public')));
 // setting up cors
 app.use(cors());
 // setting up logger
@@ -27,11 +23,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
 // index route
-//app.get('/', function(req, res) {
-//  res.sendFile(__dirname + '/public/index.html');
-//});
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname+'/client/build/index.html'));
+app.get('/', function(req, res) {
+  res.sendFile(__dirname + '/public/index.html');
 });
 
 // API route
