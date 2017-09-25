@@ -45,9 +45,10 @@ usersController.create = (req, res) => {
 };
 
 usersController.delete = (req, res) => {
+  console.log("this is delete params ", req.params.id)
    User.destroy(req.params.id)
      .then(() => {
-       res.json({message:'ok', data:{users}})
+       res.json({message:'ok'})
      }).catch(err => {
        console.log(err);
       res.status(400).json({message:'400',err});
