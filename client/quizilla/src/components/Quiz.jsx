@@ -72,15 +72,16 @@ handleClick(){
   }
   render() {
     return(
-      <div>
+      <div id='quiz'>
         <h3>{this.state.question}</h3>
-        <input id='input' placeholder='your answer'></input>
-        <button onClick={this.handleClick}>Answer</button>
+        <input id='input' placeholder='Your Answer'></input>
+        <button id='answer' onClick={this.handleClick}>Enter</button>
         <h3>Your Score: {this.state.score} of 50</h3>
       </div>
       )
   }
 
-}//Closing for Class Quiz
+}
+//Closing for Class Quiz
 
 export default Quiz;

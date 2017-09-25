@@ -52,9 +52,13 @@ nav ul li:hover {
 }
 
 /* home.jsx file */
-#form p {
+/*#form p {
   font-family: Georgia;
   font-size: 25px;
+}*/
+#home p {
+  font-family: Bangers;
+  font-size: 30px;
 }
 
 form {
@@ -83,16 +87,39 @@ input {
 }
 
 /* quizzes */
-h3 {
-  font-family: Georgia;
+#quiz h3 {
+  font-family: Bangers;
   font-size: 22px;
 }
 
-button {
-  padding: 12px 18px;
-  border-radius: 10px;
-  border: none;
-  /*background-color: white;*/
+#answer {
+  padding: 8px 18px;
+  border-radius: 5px;
+  border: 2px solid black;
+  font-size: 15px;
+  font-family: Georgia;
+  cursor: pointer;
+  background-color: white;
+}
+
+/* users */
+.quotelist {
+display: flex;
+justify-content: space-around;
+margin-top: 10%
+}
+
+#user {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  border: 1px solid black;
+  height: 250px;
+  width: 200px;
+}
+
+#userContent {
+  font-family: Georgia;
 }
 
 /*************************** FOOTER ****************************/

@@ -4,10 +4,12 @@ import {Link} from 'react-router-dom';
 class User extends Component {
   render() {
     return (
-      <div className="my-quote">
-        <h3>{this.props.user.username}</h3>
-        <span className="author">{this.props.user.password}</span>
-        <span className="genre">{this.props.user.name}</span>
+      <div id='user' className="my-quote">
+        <div id='userContent'>
+        <p>Username: {this.props.user.username}</p>
+        <p className="author">Password: {this.props.user.password}</p>
+        <p className="genre">Name: {this.props.user.name}</p>
+        </div>
 
       </div>
     );
