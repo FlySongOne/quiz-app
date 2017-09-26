@@ -48,7 +48,6 @@ class UserList extends Component {
       const users = this.state.usersListData.filter((user) => {
         if(user.id !== id) { return user}
       })
-      //udate state5
       this.setState({
            usersListData:users
       });
@@ -58,7 +57,7 @@ class UserList extends Component {
 
   render() {
     return (
-      <div className="quotelist">
+      <div className="userList">
         {this.renderUserList()}
       </div>
     );
