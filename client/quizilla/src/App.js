@@ -20,6 +20,7 @@ constructor(){
         users: [],
         inputUsernameVal:'',
         inputPasswordVal:'',
+        currentUser: '',
      }
      this.handleSubmit = this.handleSubmit.bind(this);
      this.handleInputUsernameChange = this.handleInputUsernameChange.bind(this);
@@ -50,7 +51,13 @@ constructor(){
     });
   }
 
+  currentUserFunc(username) {
+  this.setState({
+    currentUser: username,
+  })
+ }
   handleSubmit(event){
+    this.currentUserFunc(this.state.inputUsernameVal);
     //console.log('handleSubmit', this.state);
     event.preventDefault();
     event.target.username='';
@@ -86,7 +93,7 @@ constructor(){
     return (
       <div className="App">
         <div className="App-header">
-        <Header />
+        <Header currentUser={this.state.currentUser}/>
         <LoginForm
           handleInputUsernameChange={this.handleInputUsernameChange}
           handleInputPasswordChange={this.handleInputPasswordChange}

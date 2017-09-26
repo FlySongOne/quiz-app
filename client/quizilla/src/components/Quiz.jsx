@@ -80,6 +80,7 @@ handleClick(){
            this.score += 1;
            this.setState({
               score: this.score,
+              numberCorrect: this.score,
            })
         }else{
            console.log("Wrong answer!");
@@ -94,7 +95,7 @@ handleClick(){
     })
   }
   yourScore(){
-     console.log('Your score is '+this.score+'/50');
+     console.log('Your score is '+this.score+` ${this.limit}`);
   }
 
   gameSummaryFunc(){
@@ -106,11 +107,11 @@ handleClick(){
 
 
   render() {
-    console.log("THIS STATE GAME OVER",this.state.gameOver)
+    console.log("THIS STATE GAME OVER",this.state)
     let gameSummary = this.state.gameOver ? <GameSummary
     displayVal={this.state.displayVal}
     changeDisplayVal={this.changeDisplayVal}
-    numberCorrect={this.numberCorrect} /> :null;
+    numberCorrect={this.state.numberCorrect} /> :null;
     return(
       <div>
         <h3>{this.state.question}</h3>
