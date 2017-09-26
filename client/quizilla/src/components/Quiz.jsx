@@ -99,10 +99,7 @@ handleClick(){
   }
 
   gameSummaryFunc(){
-     console.log(`You guessed ${this.state.numberCorrect} out of ${this.limit}`)
-  //   event.preventDefault();
-
-     this.setState({ numberCorrect: this.state.score})
+     window.location.reload()
   }
 
 
@@ -120,7 +117,7 @@ handleClick(){
         { gameSummary }
 
         <h3>Your Score: {this.state.score} of {this.limit}</h3>
-        <a href='#' onClick={this.gameSummaryFunc.bind(this)}>Game Summary</a>
+        <a href='#' onClick={this.gameSummaryFunc.bind(this)}>Play Again</a>
       </div>
       )
   }
