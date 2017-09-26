@@ -52,9 +52,14 @@ nav ul li:hover {
 }
 
 /* home.jsx file */
-#form p {
-  font-family: Georgia;
-  font-size: 25px;
+#home p {
+  animation: app-name-change infinite 10s linear;
+  font-family: Bangers;
+  font-size: 40px;
+}
+
+.homeMeme {
+  height: 350px;
 }
 
 form {
@@ -83,24 +88,72 @@ input {
 }
 
 /* quizzes */
-h3 {
-  font-family: Georgia;
+#quiz h3 {
+  font-family: Bangers;
   font-size: 22px;
 }
 
-button {
-  padding: 12px 18px;
-  border-radius: 10px;
-  border: none;
-  /*background-color: white;*/
+#answer {
+  padding: 8px 18px;
+  border-radius: 5px;
+  border: 2px solid black;
+  font-size: 15px;
+  font-family: Georgia;
+  cursor: pointer;
+  background-color: white;
 }
 
+/* users */
+.quotelist {
+display: flex;
+justify-content: space-around;
+margin-top: 10%
+}
+
+#user {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  border: 1px solid black;
+  height: 250px;
+  width: 200px;
+}
+
+#userContent {
+  font-family: Georgia;
+}
+
+.avatarImg {
+  height: 120px;
+}
+
+/* about page */
+#about {
+  font-family: Bangers;
+  font-size: 25px;
+}
+
+.aboutImage {
+  height: 315px;
+}
+
+@keyframes app-name-change {
+  from {color: yellow;}
+  to {color: green;}
+}
 /*************************** FOOTER ****************************/
 
 .App-footer {
-  margin-top: 350px;
+  /*margin-top: 350px;
   background-color: #222;
   height: 150px;
   padding: 20px;
+  color: white;*/
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  background-color: #222;
   color: white;
 }
