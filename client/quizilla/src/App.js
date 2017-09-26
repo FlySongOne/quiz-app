@@ -51,19 +51,19 @@ constructor(){
   }
 
   handleSubmit(event){
-    console.log('handleSubmit', this.state);
+    //console.log('handleSubmit', this.state);
     event.preventDefault();
     event.target.username='';
     event.target.password='';
 
-    console.log(this.state.inputUsernameVal);
+    //console.log(this.state.inputUsernameVal);
 
  //   this.existingUser(this.state.inputUsernameVal, this.state.inputPasswordVal);
    axios.post('http://localhost:3001/api/users/', {
        username: this.state.inputUsernameVal,
        password: this.state.inputPasswordVal,
      })
-     .then(res => { console.log('after res in handleSubmit', res.data.data.users.username)
+     .then(res => { //console.log('after res in handleSubmit', res.data.data.users.username)
       {
         const newUser ={
            username: res.data.data.users.username,
@@ -74,7 +74,7 @@ constructor(){
             users: prevState.users.concat(newUser)
           }
         })
-        console.log("handleSub prevState" , this.state);
+        //console.log("handleSub prevState" , this.state);
       }
     }).catch(err =>console.log(err));
 
@@ -82,7 +82,7 @@ constructor(){
 
 
   render() {
-    console.log('APP rendering', this.state);
+    //console.log('APP rendering', this.state);
     return (
       <div className="App">
         <div className="App-header">

@@ -1,18 +1,23 @@
 import React, { Component } from 'react';
-import avatar from './avatar.png';
 import {Link} from 'react-router-dom';
 
 class User extends Component {
+  constructor(props) {
+    super(props)
+    this.handleItemDelete = this.handleItemDelete.bind(this)
+  }
+
+  handleItemDelete() {
+    const id = this.props.user.id;
+    this.props.handleItemDelete(id)
+  }
   render() {
     return (
-      <div id='user' className="my-quote">
-
-        <div id='userContent'>
-        <img src={avatar} className="avatarImg" alt="Profile Avatar" />
-        <p>Username: {this.props.user.username}</p>
-        <p className="author">Password: {this.props.user.password}</p>
-        <p className="genre">Name: {this.props.user.name}</p>
-        </div>
+      <div className="my-quote">
+        <h3>{this.props.user.username}</h3>
+        <span className="author">{this.props.user.password}</span>
+        <span className="genre">{this.props.user.name}</span>
+        <button onClick={this.handleItemDelete}>Delete</button>
       </div>
     );
   };
