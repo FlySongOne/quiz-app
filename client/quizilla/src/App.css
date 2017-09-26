@@ -52,13 +52,14 @@ nav ul li:hover {
 }
 
 /* home.jsx file */
-/*#form p {
-  font-family: Georgia;
-  font-size: 25px;
-}*/
 #home p {
+  animation: app-name-change infinite 10s linear;
   font-family: Bangers;
-  font-size: 30px;
+  font-size: 40px;
+}
+
+.homeMeme {
+  height: 350px;
 }
 
 form {
@@ -122,12 +123,37 @@ margin-top: 10%
   font-family: Georgia;
 }
 
+.avatarImg {
+  height: 120px;
+}
+
+/* about page */
+#about {
+  font-family: Bangers;
+  font-size: 25px;
+}
+
+.aboutImage {
+  height: 315px;
+}
+
+@keyframes app-name-change {
+  from {color: yellow;}
+  to {color: green;}
+}
 /*************************** FOOTER ****************************/
 
 .App-footer {
-  margin-top: 350px;
+  /*margin-top: 350px;
   background-color: #222;
   height: 150px;
   padding: 20px;
+  color: white;*/
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  background-color: #222;
   color: white;
 }

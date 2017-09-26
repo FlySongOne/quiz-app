@@ -5,7 +5,7 @@ class Footer extends Component {
   render() {
     return (
       <div className="App-footer">
-        <p> Hi im a footer </p>
+        <p> QUIZZILLA 2017 | © 2017 </p>
       </div>
       );
   };
