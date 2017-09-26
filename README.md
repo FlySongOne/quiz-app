@@ -8,6 +8,7 @@ A FlashCard Quiz Game with various quiz types and difficulty settings. Quiz ques
 
 
 ![Database Tables](./images/project3_DB_Tables.png)
+![Question FlowChart](Question_FlowChart.png)
 ![Log In Page](./images/LogInPage.png)
 ![Account Page](./images/AccountPage.png)
 ![Qusetion Display](./images/QuestDisplay.png)
