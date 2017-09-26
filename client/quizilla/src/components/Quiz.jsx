@@ -5,6 +5,8 @@ import Footer from './partials/Footer';
 import Home from './home';
 import About from './About';
 import QuestionList from './QuestionList';
+import {Link} from 'react-router-dom';
+import GameSummary from './GameSummary';
 
 class Quiz extends Component {
   constructor(){
@@ -12,16 +14,27 @@ class Quiz extends Component {
    this.state = {
        quizes: [],
        questions: [],
-
+       gameSummary:'',
+       numberCorrect:0,
+       score: 0,
+       displayVal: 'block',
+       gameOver: false,
    }
+ //  this.numberCorrect = 0;
    this.score = 0;
    this.answerCounter = 0;
    this.questionCounter = 1;
    this.limit = 0;
    this.handleClick = this.handleClick.bind(this);
+   this.changeDisplayVal = this.changeDisplayVal.bind(this);
+  }
+
+  changeDisplayVal() {
+    this.setState({
+      displayVal: "none",
+    })
   }
   componentDidMount(){
-    console.log("component didMount");
      axios('http://localhost:3001/api/questions/')
       .then(res => {
     this.limit = res.data.data.questions.length;
@@ -35,9 +48,19 @@ handleClick(){
     let input = document.getElementById('input').value
 
     console.log('Inside handleClick');
-    this.questionFunc(input);
-    let field = document.getElementById('input');
-    field = "";
+
+    if(this.answerCounter < this.limit ){
+      this.questionFunc(input);
+
+    }
+
+    if(this.answerCounter === this.limit-1){
+      this.setState({
+        gameOver: true,
+        })
+      console.log('this.game over is ',this.gameOver);
+    }
+
   }
 
   questionFunc(input){
@@ -51,36 +74,49 @@ handleClick(){
         if(input === this.state.answer)
         {
            console.log("Correct answer!");
-           this.score += 10;
+           this.score += 1;
            this.setState({
               score: this.score,
+              numberCorrect: this.score,
            })
         }else{
            console.log("Wrong answer!");
         }
         console.log("handle click", input, this.state.answer, this.score )
-        if( this.answerCounter < 5){
+        if( this.answerCounter < this.limit){
            this.answerCounter += 1;
         }
-        if(this.questionCounter < 4){
+        if(this.questionCounter < this.limit-1){
            this.questionCounter += 1;
         }
     })
   }
   yourScore(){
-     console.log('Your score is '+this.score+'/50');
+     console.log('Your score is '+this.score+` ${this.limit}`);
   }
+
+  gameReset(){
+     window.location.reload()
+  }
+
+
   render() {
+    console.log("THIS STATE GAME OVER",this.state)
+    let gameSummary = this.state.gameOver ? <GameSummary
+    displayVal={this.state.displayVal}
+    changeDisplayVal={this.changeDisplayVal}
+    numberCorrect={this.state.numberCorrect} /> :null;
     return(
       <div>
         <h3>{this.state.question}</h3>
         <input id='input' placeholder='your answer'></input>
         <button onClick={this.handleClick}>Answer</button>
-        <h3>Your Score: {this.state.score} of 50</h3>
+        { gameSummary }
+        <h3>Your Score: {this.state.score} of {this.limit}</h3>
+        <a href='#' onClick={this.gameReset.bind(this)}>Play Again</a>
       </div>
       )
   }
-
-}//Closing for Class Quiz
+}
 
 export default Quiz;
