@@ -30,17 +30,14 @@ class Quiz extends Component {
   }
 
   changeDisplayVal() {
-    console.log('inside changeDisplayVal')
     this.setState({
       displayVal: "none",
     })
   }
   componentDidMount(){
-    console.log("component didMount");
      axios('http://localhost:3001/api/questions/')
       .then(res => {
     this.limit = res.data.data.questions.length;
-    console.log()
     this.setState({
            question: res.data.data.questions[0].question,
 
@@ -98,7 +95,7 @@ handleClick(){
      console.log('Your score is '+this.score+` ${this.limit}`);
   }
 
-  gameSummaryFunc(){
+  gameReset(){
      window.location.reload()
   }
 
@@ -115,13 +112,11 @@ handleClick(){
         <input id='input' placeholder='your answer'></input>
         <button onClick={this.handleClick}>Answer</button>
         { gameSummary }
-
         <h3>Your Score: {this.state.score} of {this.limit}</h3>
-        <a href='#' onClick={this.gameSummaryFunc.bind(this)}>Play Again</a>
+        <a href='#' onClick={this.gameReset.bind(this)}>Play Again</a>
       </div>
       )
   }
-
-}//Closing for Class Quiz
+}
 
 export default Quiz;
