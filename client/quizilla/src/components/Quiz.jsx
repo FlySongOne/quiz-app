@@ -17,15 +17,23 @@ class Quiz extends Component {
        gameSummary:'',
        numberCorrect:0,
        score: 0,
+       displayVal: 'block',
+       gameOver: false,
    }
-   this.gameOver = false;
  //  this.numberCorrect = 0;
    this.score = 0;
    this.answerCounter = 0;
    this.questionCounter = 1;
    this.limit = 0;
    this.handleClick = this.handleClick.bind(this);
+   this.changeDisplayVal = this.changeDisplayVal.bind(this);
+  }
 
+  changeDisplayVal() {
+    console.log('inside changeDisplayVal')
+    this.setState({
+      displayVal: "none",
+    })
   }
   componentDidMount(){
     console.log("component didMount");
@@ -50,7 +58,9 @@ handleClick(){
     }
 
     if(this.answerCounter === this.limit-1){
-      this.gameOver = true;
+      this.setState({
+        gameOver: true,
+        })
       console.log('this.game over is ',this.gameOver);
     }
 
@@ -90,18 +100,24 @@ handleClick(){
   gameSummaryFunc(){
      console.log(`You guessed ${this.state.numberCorrect} out of ${this.limit}`)
   //   event.preventDefault();
+
      this.setState({ numberCorrect: this.state.score})
   }
 
 
   render() {
-    let gameSummary = this.state.numberCorrect?<GameSummary numberCorrect={this.state.numberCorrect}/>:null;
+    console.log("THIS STATE GAME OVER",this.state.gameOver)
+    let gameSummary = this.state.gameOver ? <GameSummary
+    displayVal={this.state.displayVal}
+    changeDisplayVal={this.changeDisplayVal}
+    numberCorrect={this.numberCorrect} /> :null;
     return(
       <div>
         <h3>{this.state.question}</h3>
         <input id='input' placeholder='your answer'></input>
         <button onClick={this.handleClick}>Answer</button>
         { gameSummary }
+
         <h3>Your Score: {this.state.score} of {this.limit}</h3>
         <a href='#' onClick={this.gameSummaryFunc.bind(this)}>Game Summary</a>
       </div>

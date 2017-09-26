@@ -11,6 +11,7 @@ import About from './components/About';
 import QuestionList from './components/QuestionList';
 import UserList from './components/UserList';
 import LoginForm from './components/LoginForm';
+import GameSummary from './components/GameSummary';
 
 
 class App extends Component {
@@ -20,11 +21,11 @@ constructor(){
         users: [],
         inputUsernameVal:'',
         inputPasswordVal:'',
+        currentUser: '',
      }
      this.handleSubmit = this.handleSubmit.bind(this);
      this.handleInputUsernameChange = this.handleInputUsernameChange.bind(this);
      this.handleInputPasswordChange = this.handleInputPasswordChange.bind(this);
-
 
   }
   componentDidMount() {
@@ -37,6 +38,7 @@ constructor(){
         });
       });
   }
+
   handleInputUsernameChange(event) {
     this.setState({
       inputUsernameVal: event.target.value
@@ -49,8 +51,14 @@ constructor(){
       inputPasswordVal: event.target.value
     });
   }
+  currentUserFunc(username) {
+  this.setState({
+    currentUser: username,
+  })
+ }
 
   handleSubmit(event){
+    this.currentUserFunc(this.state.inputUsernameVal);
     //console.log('handleSubmit', this.state);
     event.preventDefault();
     event.target.username='';
@@ -77,16 +85,14 @@ constructor(){
         //console.log("handleSub prevState" , this.state);
       }
     }).catch(err =>console.log(err));
-
   }
 
 
   render() {
-    //console.log('APP rendering', this.state);
     return (
       <div className="App">
         <div className="App-header">
-        <Header />
+        <Header currentUser={this.state.currentUser}/>
         <LoginForm
           handleInputUsernameChange={this.handleInputUsernameChange}
           handleInputPasswordChange={this.handleInputPasswordChange}
@@ -95,7 +101,6 @@ constructor(){
           inputPasswordVal={this.inputPasswordVal}
           />
         </div>
-
         <main>
           <Switch>
            <Route exact path='/' component={Home} />

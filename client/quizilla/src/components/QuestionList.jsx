@@ -10,6 +10,7 @@ class QuestionList extends Component {
     quizes: [],
     questions: [],
     questionListDataReceived: false,
+    displayVal: 'none',
     }
      this.gameOver = false;
      this.numberCorrect = 0;
@@ -18,6 +19,14 @@ class QuestionList extends Component {
      this.questionCounter = 1;
      this.limit = 0;
      this.handleClick = this.handleClick.bind(this);
+     this.changeDisplayVal = this.changeDisplayVal.bind(this);
+  }
+
+  changeDisplayVal() {
+    console.log('inside changeDisplayVal')
+    this.setState({
+      displayVal: 'none',
+    })
   }
 componentDidMount() {
   axios('https://api.quizlet.com/2.0/sets/415?client_id=27pm26gZCk&whitespace=1')
@@ -31,9 +40,6 @@ componentDidMount() {
   }
   handleClick(){
       let input = document.getElementById('input').value
-
-      console.log('Inside handleClick');
-
     if(this.answerCounter < this.limit){
       this.questionFunc(input);
     }
@@ -85,7 +91,11 @@ componentDidMount() {
      console.log('Your score is '+this.score+'/50');
   }
   render() {
-    let gameSummary = this.numberCorrect ? <GameSummary numberCorrect={this.numberCorrect} /> :null;
+    console.log("INSIDE QLLLL", this.state)
+    let gameSummary = this.numberCorrect ? <GameSummary
+    displayVal={this.state.displayVal}
+    changeDisplayVal={this.changeDisplayVal}
+    numberCorrect={this.numberCorrect} /> :null;
     return(
       <div>
         <h3>{this.state.question}</h3>
