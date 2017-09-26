@@ -18,7 +18,7 @@ class LoginForm extends Component {
            <input
            value= {this.props.inputPasswordVal}
            className='nameInput'
-           type='text'
+           type='password'
            placeholder='Password'
            onChange={this.props.handleInputPasswordChange}
            />
