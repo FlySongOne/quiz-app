@@ -16,7 +16,7 @@ class QuestionList extends Component {
     gameOver: false,
     questionListDataReceived: false,
     }
-     this.axiousUrl = 'https://api.quizlet.com/2.0/sets/415?client_id=27pm26gZCk&whitespace=1';
+     this.axiosUrl = 'https://api.quizlet.com/2.0/sets/415?client_id=27pm26gZCk&whitespace=1';
      this.numberCorrect = 0;
      this.score = 0;
      this.answerCounter = 0;
@@ -31,7 +31,7 @@ class QuestionList extends Component {
     })
   }
   componentDidMount() {
-    axios(this.axiousUrl)
+    axios(this.axiosUrl)
       .then(res =>{
         this.limit = res.data.terms.length;
         console.log("res data", res.data.terms);
@@ -57,9 +57,9 @@ class QuestionList extends Component {
     }
   }
   questionFunc(input){
-
     axios(this.axiosUrl)
       .then(res => {
+        console.log("INSIDE QUESTION FUNC",res.data.terms[this.answerCounter].definition, input)
         this.setState({
            answer: res.data.terms[this.answerCounter].definition,
            question: res.data.terms[this.questionCounter].term,
